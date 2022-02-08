@@ -3,20 +3,16 @@
 #include "matrix.h"
 #include "benchmarks.h"
 
+constexpr std::pair<size_t, size_t> FIRST_SHAPE = {1000, 1000};
+constexpr size_t WIDTH_SECOND = 10;
+
 
 int main() {
     //! WARNING: here I won't print all the results, but only the first matrix
     //! (some operation may not change it and instead create a new one)
-    size_t height1, width1;
-    std::cout << "Enter the width and the height of the first matrix: ";
-    std::cin >> height1 >> width1;
 
-    size_t width2;
-    std::cout << "Enter the width of the second matrix: ";
-    std::cin >> width2;
-
-    Matrix<double> first(height1, width1, 1.0);
-    Matrix<double> second(width1, width2, 1.0);
+    Matrix<double> first(FIRST_SHAPE.first, FIRST_SHAPE.second, 1.0);
+    Matrix<double> second(FIRST_SHAPE.second, WIDTH_SECOND, 1.0);
 
     perform_benchmark<double>(
             first, "Adding a scalar: ",
